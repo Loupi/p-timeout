@@ -1,9 +1,9 @@
-import test from 'ava';
-import delay from 'delay';
-import PCancelable from 'p-cancelable';
-import inRange from 'in-range';
-import timeSpan from 'time-span';
-import pTimeout, {TimeoutError} from './index.js';
+const test = require('ava');
+const delay = require('delay');
+const PCancelable = require('p-cancelable-cjs');
+const inRange = require('in-range-cjs');
+const timeSpan = require('time-span');
+const pTimeout = require('./index.js');
 
 const fixture = Symbol('fixture');
 const fixtureError = new Error('fixture');
@@ -32,7 +32,7 @@ test('handles milliseconds being `Infinity`', async t => {
 });
 
 test('rejects after timeout', async t => {
-	await t.throwsAsync(pTimeout(delay(200), 50), {instanceOf: TimeoutError});
+	await t.throwsAsync(pTimeout(delay(200), 50), {instanceOf: pTimeout.TimeoutError});
 });
 
 test('rejects before timeout if specified promise rejects', async t => {
@@ -58,7 +58,7 @@ test('calls `.cancel()` on promise when it exists', async t => {
 		resolve();
 	});
 
-	await t.throwsAsync(pTimeout(promise, 50), {instanceOf: TimeoutError});
+	await t.throwsAsync(pTimeout(promise, 50), {instanceOf: pTimeout.TimeoutError});
 	t.true(promise.isCanceled);
 });
 
