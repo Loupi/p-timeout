@@ -2,7 +2,7 @@ const test = require('ava');
 const delay = require('delay');
 const PCancelable = require('p-cancelable-cjs');
 const inRange = require('in-range-cjs');
-const timeSpan = require('time-span');
+const timeSpan = require('time-span-cjs');
 const pTimeout = require('./index.js');
 
 const fixture = Symbol('fixture');
