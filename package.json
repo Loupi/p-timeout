@@ -35,7 +35,7 @@
 		"delay": "^5.0.0",
 		"in-range-cjs": "git+https://github.com/Loupi/in-range.git",
 		"p-cancelable-cjs": "git+https://github.com/Loupi/p-cancelable.git",
-		"time-span": "^4.0.0",
+		"time-span-cjs": "git+https://github.com/Loupi/time-span.git",
 		"tsd": "^0.14.0",
 		"xo": "^0.38.2"
 	},
