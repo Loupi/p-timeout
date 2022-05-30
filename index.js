@@ -1,4 +1,4 @@
-export class TimeoutError extends Error {
+class TimeoutError extends Error {
 	constructor(message) {
 		super(message);
 		this.name = 'TimeoutError';
@@ -9,7 +9,7 @@ export class TimeoutError extends Error {
 An error to be thrown when the request is aborted by AbortController.
 DOMException is thrown instead of this Error when DOMException is available.
 */
-export class AbortError extends Error {
+class AbortError extends Error {
 	constructor(message) {
 		super();
 		this.name = 'AbortError';
@@ -35,7 +35,7 @@ const getAbortedReason = signal => {
 	return reason instanceof Error ? reason : getDOMException(reason);
 };
 
-export default function pTimeout(promise, milliseconds, fallback, options) {
+function pTimeout(promise, milliseconds, fallback, options) {
 	let timer;
 
 	const cancelablePromise = new Promise((resolve, reject) => {
@@ -103,3 +103,7 @@ export default function pTimeout(promise, milliseconds, fallback, options) {
 
 	return cancelablePromise;
 }
+
+module.exports = pTimeout;
+module.exports.TimeoutError = TimeoutError;
+module.exports.AbortError = AbortError;
